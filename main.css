@@ -1,0 +1,34 @@
+
+#loader {
+    width: 100px;
+    display:none;
+}
+.mycard{
+    margin:10px;
+    display:inline-block;
+    width:27%;
+    height:auto;
+    padding:3px;
+    border:1px solid rgb(34, 230, 34);
+    text-align: center;
+    box-shadow: 2px 2px 2px 2px;
+}
+h1{
+    text-align: center;
+    color:rgb(34, 230, 34);
+}
+#etherVal{
+    border:0;
+    outline: 0;
+    border-bottom: 1px solid rgb(34, 230, 34);
+    box-shadow: 2px 2px 2px 2px;
+    margin:20px;
+    width:80%;
+}
+ul{
+    list-style: none;
+    text-align: center;
+}
+li{
+font-size: 30px;
+}

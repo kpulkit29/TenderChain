@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Coursetro Smart Contract</title>
+
+	<link rel="stylesheet" type="text/css" href="main.css">
+	  <!-- Compiled and minified CSS -->
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+	  
+		<!-- Compiled and minified JavaScript -->
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+    <script src="./node_modules/web3/dist/web3.min.js"></script>
+
+</head>
+<body>
+	<nav>
+		<div class="nav-wrapper">
+		  <a href="#!" class="brand-logo center">Tender<span style="color:rgb(88, 81, 81)">Chain</span></a>
+		  <!-- <ul class="left">
+			<li><a href="">Company detail</a></li>
+			<li><a href="">Shopkeepers</a></li>
+		  </ul>
+		  <ul class="right">
+			<li style="padding-right:20px;"><a href="">Buy</a></li>
+		  </ul> -->
+		</div>
+	  </nav>
+			
+	  <div class="row">
+		<div class="col s12">
+		  <ul class="tabs">
+			<li class="tab col s3"><a href="#test1">Shopkeepers</a></li>
+			<li class="tab col s3"><a class="active" href="#test2">Company Details</a></li>
+			<li class="tab col s3 "><a href="#test3">Buy material</a></li>
+			<li class="tab col s3"><a href="#test4">About Us</a></li>
+		  </ul>
+		</div>
+	  </div>
+	  <!--  -->
+	 <div id="test2" style="margin:auto;display:block;margin-top:10%;margin-left:30%">
+    
+		<div class="row">
+			<div class="col s16 m6">
+			  <div class="card blue-grey darken-1">
+				<div class="card-content white-text">
+				  <span class="card-title">ABC Constructions</span>
+				  <p class="address"></p>
+				  <strong>Experience:<span>Been In the industry for 4 years</span></strong><br>
+				  <strong>Status:<span>Currently Selected</span></strong><br>
+				  <strong>Remaining Balance:<span id="companyBalance"></span></strong><br>
+				</div>
+				
+			  </div>
+				</div>
+				
+			  </div>
+			</div>
+		  </div>
+	 </div>
+
+	 <div id="test1" style="margin-left:10%">
+	 </div>
+	<!--       -->
+    <div id="test3" style="margin-left:10%;width:80%;">
+		<div class="input-field col s4">
+			<input id="index" type="number">
+			<label>Enter serial no of shopkeeper</label>
+		  </div>
+		  <button class="btn waves-effect waves-light" id="call" name="action">Submit
+			<i class="material-icons right"></i>
+		  </button>
+		</div>
+		<!-- -->
+		<!-- modal -->
+		<!-- Modal Trigger -->
+		
+		<!-- -->
+    <script>
+       if (typeof web3 !== 'undefined') {
+           web3 = new Web3(web3.currentProvider);
+       } else {
+           web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+       }
+      
+       web3.eth.defaultAccount = web3.eth.accounts[0];
+
+       var CoursetroContract = web3.eth.contract([
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getKeepers",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "_to",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "amt",
+				"type": "uint256"
+			}
+		],
+		"name": "received",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "_from",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "amt_added",
+				"type": "uint256"
+			}
+		],
+		"name": "rfund",
+		"type": "event"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "index",
+				"type": "uint256"
+			},
+			{
+				"name": "amt",
+				"type": "uint256"
+			},
+			{
+				"name": "_to",
+				"type": "address"
+			}
+		],
+		"name": "send_money",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "id",
+				"type": "uint256"
+			}
+		],
+		"name": "setBalance",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "fallback"
+	}
+]);
+//shops array.....
+     var shops=[{"name":"shop 1","Material":"1","add":web3.eth.accounts[1].toString(),"bal":0},{"name":"shop 2","Material":"2","add":web3.eth.accounts[2].toString(),"bal":0},{"name":"shop 3","Material":"4","add":web3.eth.accounts[3].toString(),"bal":0},{"name":"shop 4","Material":"4","add":web3.eth.accounts[4].toString(),"bal":0},{"name":"shop 5","Material":"4","add":web3.eth.accounts[5].toString(),"bal":0}];
+       var tender = CoursetroContract.at('0x4917dd6fad7d60c2286d0d843a098922b58c4765');
+	   var list_Keepers=undefined;
+	   var recEvent=tender.received();
+	   //populating list of  shops
+	   recEvent.watch(function(err,res){
+		   console.log(res);
+	      alert("Transaction successful\n"+"blockHash-"+res.blockHash+"\n"+"transferred to"+res.args._to)
+	   });
+	   for(var i=0;i<shops.length;i++){
+		$("#test1").append("<div class='mycard'><h1 class='cardstr'>"+shops[i].name+"</h1><br><h4>Material"+shops[i].Material+"</h4><br><strong>Address: "+shops[i].add+"</strong><br><strong>Balance:<span style='color:red' id="+(i+1)+">"+shops[i].bal+"<span></strong></div>")
+	   }
+        
+	   $(".address").html("Ethereum Address-"+web3.eth.defaultAccount.toString());
+       $("#call").click(function(){
+	
+		 tender.send_money(2,web3.toWei(2,"ether"),web3.eth.accounts[2],{from:web3.defaultAccount,gas:500000});
+		 //  console.log(web3.eth.accounts);
+		 var text_to_update=parseInt($("#"+$("#index").val()).text())+2;
+		 $("#"+$("#index").val()).html(text_to_update);
+		 var updatedBal=parseInt($("#companyBalance").text())-2
+	   $("#companyBalance").html(updatedBal);
+	   });
+       
+	   console.log(web3.fromWei((web3.eth.getBalance(web3.eth.accounts[2]).c[0]),"ether"));
+	  
+	   //to set balance of company
+	  web3.eth.getBalance(web3.eth.defaultAccount,function(err,res){
+		  $("#companyBalance").html(web3.fromWei(res.toNumber(),"ether"))
+	  })
+    </script>
+
+</body>
+</html>
