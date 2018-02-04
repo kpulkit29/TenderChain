@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "194475667883",
+    "firebase_url": "https://tender-chain.firebaseio.com",
+    "project_id": "tender-chain",
+    "storage_bucket": "tender-chain.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:194475667883:android:ea54b825684c79a5",
+        "android_client_info": {
+          "package_name": "com.hackrupt.yolo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "194475667883-2clka9omh6e6g3ardeftpd055672ipcn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hackrupt.yolo",
+            "certificate_hash": "1b5482523154de5cdfd228c176a0ac815daf11b2"
+          }
+        },
+        {
+          "client_id": "194475667883-dkp28i3g9red8etjpdd9cfqnps4qoavm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlvikKfAY6OAVw9UcqRnV0bwxorO7ntuA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "194475667883-dkp28i3g9red8etjpdd9cfqnps4qoavm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

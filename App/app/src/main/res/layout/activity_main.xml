@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.hackrupt.yolo.MainActivity">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Visitor"
+        android:textColor="#000"
+        android:gravity="center"
+        android:onClick="visitor"
+        android:textSize="20sp"
+        android:id="@+id/visitor"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/register_supplier"
+        android:background="@color/colorYellow"
+        android:padding="20dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:textColor="#000"
+        android:textSize="20sp"
+        android:onClick="login"
+        android:textStyle="bold"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@id/visitor"
+        android:background="@color/colorYellow"
+        android:id="@+id/login"
+        android:padding="20dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Register as Supplier"
+        android:textColor="#000"
+        android:gravity="center"
+        android:onClick="regSup"
+        android:textSize="20sp"
+        android:id="@+id/register_supplier"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/register_tender"
+        android:background="#cca300"
+        android:padding="20dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/register_tender"
+        android:text="Register Tender"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#000"
+        android:onClick="regTend"
+        android:gravity="center"
+        android:background="@color/colorYellow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:padding="20dp"/>
+
+
+</android.support.constraint.ConstraintLayout>
