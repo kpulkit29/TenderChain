@@ -3,3 +3,6 @@ TenderChain is basically a government project monitoring app built on the top of
 
 
 ![screen shot 2018-02-15 at 7 49 38 pm](https://user-images.githubusercontent.com/20151526/36261180-8cb69376-1289-11e8-8558-99993230d5f8.png)
+
+The list containing details of vendors
+![screen shot 2018-02-15 at 7 49 51 pm](https://user-images.githubusercontent.com/20151526/36261224-b11ffc16-1289-11e8-82fb-00e6b9582248.png)
